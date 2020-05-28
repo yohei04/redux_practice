@@ -9,3 +9,9 @@ export const decrement = () => {
     type: "DECREMENT",
   };
 };
+export const multiplication = (ml) => {
+  return {
+    type: "MULTIPLICATION",
+    payload: ml
+  };
+};
