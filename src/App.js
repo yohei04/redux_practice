@@ -3,7 +3,7 @@ import { Provider } from "react-redux";
 // import Posts from "./components/Posts";
 // import PostForm from "./components/PostForm";
 // import store from './store'
-import Test from "./DE/components/Test";
+import Color from "./DE/components/Color";
 
 import { useSelector, useDispatch } from "react-redux";
 import { increment, decrement, multiplication } from "./DE/actions";
@@ -15,7 +15,7 @@ function App() {
 
   return (
     <div className="App">
-      <Test />
+      <Color />
       <h1>Counter {counter}</h1>
       <button onClick={() => dispatch(increment(5))}>+</button>
       <button onClick={() => dispatch(decrement())}>-</button>
