@@ -10,13 +10,13 @@ import * as serviceWorker from "./serviceWorker";
 // import thunk from "redux-thunk";
 // import logger from "redux-logger";
 
-const store = createStore(
-  allReducers,
-  applyMiddleware(thunk, logger),
+// const store = createStore(
+//   allReducers,
+//   applyMiddleware(thunk, logger),
   // window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
-);
+// );
 
-store.dispatch(getPosts());
+// store.dispatch(getPosts());
 
 ReactDOM.render(
   <React.StrictMode>
