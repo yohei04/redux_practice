@@ -4,6 +4,7 @@ import { Provider } from "react-redux";
 // import PostForm from "./components/PostForm";
 // import store from './store'
 import Color from "./DE/components/Color";
+import Posts from "./DE/components/PostList";
 
 import { useSelector, useDispatch } from "react-redux";
 import { increment, decrement, multiplication } from "./DE/actions";
@@ -20,8 +21,9 @@ function App() {
       <button onClick={() => dispatch(increment(5))}>+</button>
       <button onClick={() => dispatch(decrement())}>-</button>
       <button onClick={() => dispatch(multiplication(2))}>x</button>
-
       {isLogged ? <h3>Valuable I shouldn't see</h3> : ""}
+
+      <Posts />
     </div>
   );
 }
