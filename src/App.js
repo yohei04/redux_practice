@@ -5,6 +5,8 @@ import { Provider } from "react-redux";
 // import PostForm from "./components/PostForm";
 import store from "./Codevolution/redux/store";
 import HooksCakeContainer from "./Codevolution/components/HooksCakeContainer";
+import iceCreamReducer from "./Codevolution/redux/iceCream/iceCreamReducer";
+import IceCreamContainer from "./Codevolution/components/IceCreamContainer";
 // import Color from "./DE/components/Color";
 // import Posts from "./DE/components/PostList";
 
@@ -21,6 +23,7 @@ function App() {
       <div className="App">
         <HooksCakeContainer />
         <CakeContainer />
+        <IceCreamContainer />
       </div>
     </Provider>
 
