@@ -1,9 +1,9 @@
 import React from "react";
 import CakeContainer from "./Codevolution/components/CakeContainer";
-// import { Provider } from "react-redux";
+import { Provider } from "react-redux";
 // import Posts from "./components/Posts";
 // import PostForm from "./components/PostForm";
-// import store from './store'
+import store from "./Codevolution/redux/store";
 // import Color from "./DE/components/Color";
 // import Posts from "./DE/components/PostList";
 
@@ -16,15 +16,11 @@ function App() {
   // const dispatch = useDispatch();
 
   return (
-    <div className="App">
-      <CakeContainer />
-
-    </div>
-
-
-
-
-
+    <Provider store={store}>
+      <div className="App">
+        <CakeContainer />
+      </div>
+    </Provider>
 
     // <div className="App">
     //   <Color />

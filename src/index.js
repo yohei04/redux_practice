@@ -3,12 +3,12 @@ import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./App";
 import * as serviceWorker from "./serviceWorker";
-import { createStore, applyMiddleware } from "redux";
-import allReducers from "./DE/reducers";
-import { Provider } from "react-redux";
-import { getPosts } from './DE/actions/postAction'
-import thunk from "redux-thunk";
-import logger from "redux-logger";
+// import { createStore, applyMiddleware } from "redux";
+// import allReducers from "./DE/reducers";
+// import { Provider } from "react-redux";
+// import { getPosts } from './DE/actions/postAction'
+// import thunk from "redux-thunk";
+// import logger from "redux-logger";
 
 const store = createStore(
   allReducers,
@@ -20,9 +20,9 @@ store.dispatch(getPosts());
 
 ReactDOM.render(
   <React.StrictMode>
-    <Provider store={store}>
+    {/* <Provider store={store}> */}
       <App />
-    </Provider>
+    {/* </Provider> */}
   </React.StrictMode>,
   document.getElementById("root")
 );
