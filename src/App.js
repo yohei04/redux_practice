@@ -7,6 +7,7 @@ import store from "./Codevolution/redux/store";
 import HooksCakeContainer from "./Codevolution/components/HooksCakeContainer";
 import IceCreamContainer from "./Codevolution/components/IceCreamContainer";
 import NewCakeContainer from "./Codevolution/components/NewCakeContainer";
+import ItemContainer from "./Codevolution/components/ItemContainer";
 // import Color from "./DE/components/Color";
 // import Posts from "./DE/components/PostList";
 
@@ -21,6 +22,8 @@ function App() {
   return (
     <Provider store={store}>
       <div className="App">
+        <ItemContainer cake />
+        <ItemContainer />
         <HooksCakeContainer />
         <CakeContainer />
         <IceCreamContainer />
