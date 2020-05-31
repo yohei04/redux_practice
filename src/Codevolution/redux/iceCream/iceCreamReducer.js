@@ -4,7 +4,7 @@ const initialState = {
   numOfIceCreams: 20,
 };
 
-export const iceCreamReducer = (state = initialState, action) => {
+const iceCreamReducer = (state = initialState, action) => {
   switch (action.type) {
     case BUY_ICECREAM:
       return {
@@ -15,3 +15,5 @@ export const iceCreamReducer = (state = initialState, action) => {
       return state;
   }
 };
+
+export default iceCreamReducer;
