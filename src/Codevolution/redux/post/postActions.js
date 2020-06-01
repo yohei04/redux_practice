@@ -36,5 +36,4 @@ export const fetchPosts = () => {
   };
 };
 
-export const test = console.log(axios.get("https://jsonplaceholder.typicode.com/posts"))
 

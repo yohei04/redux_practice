@@ -9,6 +9,7 @@ import IceCreamContainer from "./Codevolution/components/IceCreamContainer";
 import NewCakeContainer from "./Codevolution/components/NewCakeContainer";
 import ItemContainer from "./Codevolution/components/ItemContainer";
 import UserContainer from "./Codevolution/components/UserContainer";
+import PostContainer from "./Codevolution/components/PostContainer";
 // import Color from "./DE/components/Color";
 // import Posts from "./DE/components/PostList";
 
@@ -24,6 +25,7 @@ function App() {
     <Provider store={store}>
       <div className="App">
         <UserContainer />
+        <PostContainer />
         {/* <ItemContainer cake />
         <ItemContainer />
         <HooksCakeContainer />
