@@ -33,12 +33,12 @@ export const fetchUsers = () => {
       .then((res) => {
         const users = res.data;
         dispatch(fetchUsersSuccess(users));
-        console.log(users);
+        // console.log(users);
       })
       .catch((err) => {
         const errMsg = err.message;
         dispatch(fetchUsersFailure(errMsg));
-        console.log(errMsg);
+        // console.log(errMsg);
       });
   };
 };
