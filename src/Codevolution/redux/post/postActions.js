@@ -28,12 +28,16 @@ export const fetchPostsFailure = (error) => {
 export const fetchPosts = () => {
   return (dispatch) => {
     dispatch(fetchPostsRequest);
-    axios.get("https://jsonplaceholder.typicode.com/posts").then((res) => {
-      const posts = res.data;
-      dispatch(fetchPostsSuccess(posts));
-      console.log(posts);
-    });
+    axios
+      .get("https://jsonplaceholder.typicode.com/posts")
+      .then((res) => {
+        const posts = res.data;
+        dispatch(fetchPostsSuccess(posts));
+        // console.log(posts);
+      })
+      .catch(err => {
+        const errMsg = err.message
+        dispatch(fetchPostsFailure(errMsg))
+      })
   };
 };
-
-
