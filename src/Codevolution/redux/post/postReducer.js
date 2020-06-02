@@ -4,7 +4,7 @@ import {
   FETCH_POSTS_FAILURE,
 } from "./postTypes";
 
-initialState = {
+const initialState = {
   loading: false,
   posts: [],
   error: "",
