@@ -1,13 +1,27 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { addTodo } from '../../redux';
+import { toggleTodo } from '../../redux';
 
-const TodoList = (props) => {
-  console.log(props)
+const TodoList = ({ todos, toggleTodo }) => {
+  console.log(todos);
+
   return (
     <div>
-      {props.todos.map((todo) => (
-        <h1>・{todo.text}</h1>
+      {todos.map((todo) => (
+        <div key={todo.id} style={{ fontSize: '2rem' }}>
+          <input
+            id={`completed-${todo.id}`}
+            type="checkbox"
+            defaultChecked={todo.completed}
+            onClick={() => toggleTodo(todo.id)}
+          />
+          <label
+            for={`completed-${todo.id}`}
+            style={{ textDecoration: todo.completed ? 'line-through' : '' }}
+          >
+            {todo.text}
+          </label>
+        </div>
       ))}
     </div>
   );
@@ -19,10 +33,10 @@ const mapStateToProps = (state) => {
   };
 };
 
-// const mapDispatchToProps = (dispatch) => {
-//   return {
-//     addTodo: () => dispatch(addTodo('aaaa')),
-//   };
-// };
+const mapDispatchToProps = (dispatch) => {
+  return {
+    toggleTodo: (id) => console.log(dispatch(toggleTodo(id))),
+  };
+};
 
-export default connect(mapStateToProps, null)(TodoList);
+export default connect(mapStateToProps, mapDispatchToProps)(TodoList);

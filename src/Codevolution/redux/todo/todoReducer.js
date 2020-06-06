@@ -1,4 +1,4 @@
-import { ADD_TODO } from './todoTypes';
+import { ADD_TODO, TOGGLE_TODO } from './todoTypes';
 
 const initialState = [
   {
@@ -9,7 +9,7 @@ const initialState = [
   {
     id: 2,
     text: 'secondText',
-    completed: false,
+    completed: true,
   },
 ];
 
@@ -21,9 +21,13 @@ const todoReducer = (state = initialState, action) => {
         {
           id: action.payload.id,
           text: action.payload.text,
-          completed: action.payload.completed
+          completed: false,
         },
       ];
+    case TOGGLE_TODO:
+      return state.map((todo) =>
+        todo.id === action.id ? { ...todo, completed: !todo.completed } : todo
+      );
     default:
       return state;
   }

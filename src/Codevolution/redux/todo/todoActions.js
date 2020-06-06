@@ -1,4 +1,4 @@
-import { ADD_TODO } from './todoTypes';
+import { ADD_TODO, TOGGLE_TODO } from './todoTypes';
 
 let nextTodoId = 3;
 export const addTodo = (text) => {
@@ -7,9 +7,13 @@ export const addTodo = (text) => {
     payload: {
       id: nextTodoId++,
       text,
-      completed: false,
     },
   };
 };
 
-
+export const toggleTodo = (id) => {
+  return {
+    type: TOGGLE_TODO,
+    id
+  };
+};
