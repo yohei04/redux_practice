@@ -7,8 +7,17 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+.App {
+  text-align: center;
+  margin-top: 2rem;
 }
 
+.todo-list {
+  margin-top: 1rem;
+}
+
+.todo-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
