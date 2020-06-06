@@ -1,8 +1,8 @@
-import ADD_TODO from './todoTypes';
+import { ADD_TODO } from './todoTypes';
 
-export const todoActions = (text) => {
+export const addTodo = (text) => {
   return {
     type: ADD_TODO,
-    payload: text,
+    text,
   };
 };

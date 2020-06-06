@@ -1,16 +1,15 @@
-import ADD_TODO from './todoTypes';
+import { ADD_TODO } from './todoTypes';
 
-// initialState = {
-//   text: firstText
-// }
+const initialState = [
+  {
+  text: "firstText"
+  }
+]
 
-const todoReducer = (state = firstText, action) => {
+const todoReducer = (state = initialState, action) => {
   switch (action.type) {
     case ADD_TODO:
-      return {
-        ...state,
-        text: action.payload,
-      };
+      return [...state, {text: action.text}];
     default:
       return state;
   }

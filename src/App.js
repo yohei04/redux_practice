@@ -11,6 +11,8 @@ import ItemContainer from "./Codevolution/components/ItemContainer";
 import UserContainer from "./Codevolution/components/UserContainer";
 import PostContainer from "./Codevolution/components/PostContainer";
 import SnackContainer from "./Codevolution/components/SnackContainer";
+import AddTodo from "./Codevolution/components/todo/AddTodo";
+import TodoList from './Codevolution/components/todo/TodoList';
 // import Color from "./DE/components/Color";
 // import Posts from "./DE/components/PostList";
 
@@ -25,15 +27,17 @@ function App() {
   return (
     <Provider store={store}>
       <div className="App">
+        <AddTodo />
+        <TodoList />
         {/* <UserContainer />
-        <PostContainer /> */}
+        <PostContainer />
         <SnackContainer />
         <ItemContainer cake />
         <ItemContainer />
         <HooksCakeContainer />
         <CakeContainer />
         <IceCreamContainer />
-        <NewCakeContainer />
+        <NewCakeContainer /> */}
       </div>
     </Provider>
 
