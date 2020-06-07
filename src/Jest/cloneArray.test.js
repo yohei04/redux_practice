@@ -5,3 +5,4 @@ test('properly clones array', () => {
   expect(cloneArray(array)).toEqual(array)
   expect(cloneArray(array)).not.toBe(array)
 })
+
