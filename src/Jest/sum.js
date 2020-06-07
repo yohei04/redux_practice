@@ -1,9 +1,9 @@
 function sum(a, b) {
-  return a + a;
+  return a + b;
 }
 
-function helper() {
-  console.log('Helper')
-}
+// function helper() {
+//   console.log('Helper')
+// }
 
 module.exports = sum;
