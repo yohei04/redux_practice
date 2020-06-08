@@ -15,8 +15,9 @@ import store from './Codevolution/redux/store';
 // import TodoList from './Codevolution/components/todo/TodoList';
 // import Color from "./DE/components/Color";
 // import Posts from "./DE/components/PostList";
-import Header from './Jest/components/Header/Header';
-import Button from './Jest/components/Button/Button';
+// import Header from './Jest/components/Header/Header';
+// import Button from './Jest/components/Button/Button';
+import Clickers from './Jest/components/Clickers/Clickers';
 
 // import { useSelector, useDispatch } from "react-redux";
 // import { increment, decrement, multiplication } from "./DE/actions";
@@ -29,9 +30,7 @@ function App() {
   return (
     <Provider store={store}>
       <div className="App">
-        <header className="App-header">
-          <Button label="click me please" />
-        </header>
+        <Clickers />
         {/* <AddTodo />
         <TodoList /> */}
         {/* <UserContainer />
