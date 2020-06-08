@@ -7,3 +7,9 @@ it('renders', () => {
   const { asFragment } = render(<Header text="Hello!" />);
   expect(asFragment()).toMatchSnapshot();
 });
+
+it('inserts text in h1', () => {
+  const { getByTestId, getByText } = render(<Header text="Hello!" />);
+  expect(getByTestId('h1tag')).toHaveTextContent('Hello!');
+  expect(getByText('Hello!')).toHaveClass('fancy-h1');
+});

@@ -1,9 +1,9 @@
-import React from "react";
-import CakeContainer from "./Codevolution/components/CakeContainer";
-import { Provider } from "react-redux";
+import React from 'react';
+import CakeContainer from './Codevolution/components/CakeContainer';
+import { Provider } from 'react-redux';
 // import Posts from "./components/Posts";
 // import PostForm from "./components/PostForm";
-import store from "./Codevolution/redux/store";
+import store from './Codevolution/redux/store';
 // import HooksCakeContainer from "./Codevolution/components/HooksCakeContainer";
 // import IceCreamContainer from "./Codevolution/components/IceCreamContainer";
 // import NewCakeContainer from "./Codevolution/components/NewCakeContainer";
@@ -15,8 +15,8 @@ import store from "./Codevolution/redux/store";
 // import TodoList from './Codevolution/components/todo/TodoList';
 // import Color from "./DE/components/Color";
 // import Posts from "./DE/components/PostList";
-// import Header from './Jest/components/Header';
-import Button from './Jest/components/button/Button'
+import Header from './Jest/components/Header/Header';
+import Button from './Jest/components/Button/Button';
 
 // import { useSelector, useDispatch } from "react-redux";
 // import { increment, decrement, multiplication } from "./DE/actions";
@@ -30,8 +30,7 @@ function App() {
     <Provider store={store}>
       <div className="App">
         <header className="App-header">
-          <Button label='click me please' />
-
+          <Button label="click me please" />
         </header>
         {/* <AddTodo />
         <TodoList /> */}
