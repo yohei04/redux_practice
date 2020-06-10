@@ -41,8 +41,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    toggleTodo: (id) => console.log(dispatch(toggleTodo(id))),
-    deleteTodo: (id) => console.log(dispatch(deleteTodo(id))),
+    // toggleTodo: (id) => console.log(dispatch(toggleTodo(id))),
+    // deleteTodo: (id) => console.log(dispatch(deleteTodo(id))),
   };
 };
 
