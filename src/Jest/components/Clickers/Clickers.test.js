@@ -28,7 +28,7 @@ it('decrements count delayed', async () => {
   expect(countSpan).toHaveTextContent('-1');
 });
 
-it('incremnts two count', async () => {
+it('increments two count', async () => {
   const { getByTestId, getByText } = render(<Clickers />);
   fireEvent.click(getByText('TwoUp'));
   const countSpan = await waitForElement(() => getByText('2'));
