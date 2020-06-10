@@ -1,27 +1,45 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 const initialState = [
   {
-  id: 1, text: 'first text'
+    id: 1,
+    text: 'first text',
   },
   {
-  id: 2, text: 'second text'
+    id: 2,
+    text: 'second text',
   },
-]
+];
 
+let todoId = 3;
 const Todo = () => {
-  
+  const [query, setQuery] = useState('');
+  const [todos, setTodos] = useState(initialState);
 
+  const updateQuery = (e) => {
+    setQuery(e.target.value);
+  };
+
+  const updateTodo = () => {
+    setTodos([...todos, { id: todoId + 1, text: query }]);
+    setQuery('');
+    console.log(todos);
+  };
 
   return (
     <>
       <div className="addTodo" data-testid="addTodo">
-        <input type="text" />
-        <button>addTodo</button>
+        <input
+          type="text"
+          placeholder="add todo..."
+          value={query}
+          onChange={updateQuery}
+        />
+        <button onClick={updateTodo}>addTodo</button>
       </div>
       <div className="todoList" data-testid="todoList">
         <ul>
-          {initialState.map((todo) => (
+          {todos.map((todo) => (
             <li key={todo.id}>{todo.text}</li>
           ))}
         </ul>
