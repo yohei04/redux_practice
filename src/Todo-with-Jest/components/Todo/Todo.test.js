@@ -55,4 +55,14 @@ describe('<TodoList/ >', () => {
     expect(todoList).toHaveTextContent('first text');
     expect(todoList).toHaveTextContent('second text');
   });
+
+  test('should have line-through on clicked', () => {
+    const todo = screen.getAllByRole('listitem');
+    fireEvent.click(todo[0]);
+    expect(todo[0]).toHaveStyle(`text-decoration: line-through`);
+    screen.debug();
+    fireEvent.click(todo[0]);
+    expect(todo[0]).toHaveStyle('');
+    screen.debug();
+  });
 });
