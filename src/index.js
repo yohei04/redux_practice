@@ -1,8 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
-// import App from "./App";
-import App from './Todo-with-Jest/components/Todo/Todo'
+import App from './Jest/Todo-with-Redux/App'
 import * as serviceWorker from "./serviceWorker";
 // import { createStore, applyMiddleware } from "redux";
 // import allReducers from "./DE/reducers";
