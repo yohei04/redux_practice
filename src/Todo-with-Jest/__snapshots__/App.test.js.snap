@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should take a snapshot 1`] = `
+<DocumentFragment>
+  <div>
+    <div
+      class="button-section"
+      data-testid="count"
+    >
+      <button>
+        +
+      </button>
+      <span>
+        0
+      </span>
+      <button>
+        -
+      </button>
+    </div>
+  </div>
+</DocumentFragment>
+`;

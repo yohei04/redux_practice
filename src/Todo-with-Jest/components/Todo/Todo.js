@@ -21,8 +21,12 @@ const Todo = () => {
   };
 
   const updateTodo = () => {
-    setTodos([...todos, { id: todoId + 1, text: query }]);
-    setQuery('');
+    if (query) {
+      setTodos([...todos, { id: todoId + 1, text: query }]);
+      setQuery('');
+    } else {
+      return
+    }
     console.log(todos);
   };
 
