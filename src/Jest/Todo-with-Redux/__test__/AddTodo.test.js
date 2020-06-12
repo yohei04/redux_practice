@@ -23,4 +23,28 @@ describe('<AddTodo />', () => {
   test('should renders with redux', () => {
     expect(screen.getByTestId('addTodo')).toBeInTheDocument();
   });
+
+  test('should have Add Todo button', () => {
+    renderWithRedux(<AddTodo />);
+    expect(screen.getByRole('button')).toHaveTextContent(/add todo/i);
+  });
+
+  test('should show typed text', () => {
+    renderWithRedux(<AddTodo />);
+    const addTodoButton = screen.getByRole('button', { name: /add todo/i });
+    const inputTodo = screen.getByPlaceholderText('add todo...');
+    userEvent.type(inputTodo, 'text test');
+    expect(inputTodo.value).toBe('text test');
+  });
+
+  test('should add todo with valid text', () => {
+    renderWithRedux(<AddTodo />);
+    const addTodoButton = screen.getByRole('button', { name: /add todo/i });
+    const inputTodo = screen.getByPlaceholderText('add todo...');
+    userEvent.type(inputTodo, 'text test');
+    userEvent.click(addTodoButton);
+    const todoList = screen.getAllByRole('listitem');
+    expect(todoList).toHaveLength(1);
+    expect(todoList[0]).toHaveTextContent('text test');
+  });
 });
