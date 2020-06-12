@@ -1,13 +1,15 @@
-import React, { useState, useSelector, useDispatch } from 'react';
+import React, { useState } from 'react';
 import { addTodo } from '../redux/todoActions';
-import { connect } from 'react-redux';
+import { connect, useSelector, useDispatch } from 'react-redux';
 
-const AddTodo = ({ todos, addTodo }) => {
+const AddTodo = () => {
   const [value, setValue] = useState('');
+  const todos = useSelector((state) => state.todo);
+  const dispatch = useDispatch();
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    addTodo(value);
+    dispatch(addTodo(value));
     setValue('');
     // document.querySelector('input').focus();
   };
@@ -34,14 +36,14 @@ const AddTodo = ({ todos, addTodo }) => {
   );
 };
 
-const mapStateToProps = (state) => {
-  return { todos: state.todo };
-};
+// const mapStateToProps = (state) => {
+//   return { todos: state.todo };
+// };
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    addTodo: (text) => dispatch(addTodo(text)),
-  };
-};
+// const mapDispatchToProps = (dispatch) => {
+//   return {
+//     addTodo: (text) => dispatch(addTodo(text)),
+//   };
+// };
 
-export default connect(mapStateToProps, mapDispatchToProps)(AddTodo);
+export default AddTodo;
