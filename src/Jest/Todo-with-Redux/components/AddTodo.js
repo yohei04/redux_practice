@@ -8,16 +8,18 @@ const AddTodo = ({ todos, addTodo }) => {
     addTodo(value);
   };
 
+  // console.log(todos)
   return (
-    <div>
+    <div data-testid="addTodo">
       <input
         type="text"
+        placeholder="add todo..."
         value={value}
         onChange={(e) => setValue(e.target.value)}
       />
-      <button onClick={handleSubmit}>add Todo</button>
+      <button onClick={handleSubmit}>Add Todo</button>
       {todos.map((todo) => {
-        return <li>{todo.text}</li>;
+        return <li key={todo.id}>{todo.text}</li>;
       })}
     </div>
   );

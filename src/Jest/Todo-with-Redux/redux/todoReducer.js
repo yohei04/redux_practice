@@ -1,7 +1,9 @@
 import React from 'react';
 import { ADD_TODO } from './todoTypes';
 
-const todoReducer = (state = [], action) => {
+export const initialState = []
+
+const todoReducer = (state = initialState, action) => {
   switch (action.type) {
     case ADD_TODO:
       return [...state, { id: action.payload.id, text: action.payload.text }];

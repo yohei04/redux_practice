@@ -5,7 +5,7 @@ export const addTodo = (text) => {
   return {
     type: ADD_TODO,
     payload: {
-      id: nextTodoId + 1,
+      id: nextTodoId++,
       text,
     },
   };
