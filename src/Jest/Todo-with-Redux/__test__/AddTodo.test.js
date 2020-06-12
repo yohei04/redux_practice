@@ -31,7 +31,6 @@ describe('<AddTodo />', () => {
 
   test('should show typed text', () => {
     renderWithRedux(<AddTodo />);
-    const addTodoButton = screen.getByRole('button', { name: /add todo/i });
     const inputTodo = screen.getByPlaceholderText('add todo...');
     userEvent.type(inputTodo, 'text test');
     expect(inputTodo.value).toBe('text test');
@@ -46,5 +45,17 @@ describe('<AddTodo />', () => {
     const todoList = screen.getAllByRole('listitem');
     expect(todoList).toHaveLength(1);
     expect(todoList[0]).toHaveTextContent('text test');
+    expect(inputTodo.value).toBe('');
+  });
+
+  test("shouldn't add todo with empty text", () => {
+    renderWithRedux(<AddTodo />);
+    const addTodoButton = screen.getByRole('button', { name: /add todo/i });
+    const inputTodo = screen.getByPlaceholderText('add todo...');
+    userEvent.type(inputTodo, '');
+    userEvent.click(addTodoButton);
+    const todoList = screen.queryByRole('listitem');
+    expect(todoList).not.toBeInTheDocument();
+    screen.debug();
   });
 });

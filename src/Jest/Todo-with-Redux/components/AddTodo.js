@@ -4,23 +4,32 @@ import { connect } from 'react-redux';
 
 const AddTodo = ({ todos, addTodo }) => {
   const [value, setValue] = useState('');
-  const handleSubmit = () => {
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
     addTodo(value);
+    setValue('');
+    // document.querySelector('input').focus();
   };
 
   // console.log(todos)
   return (
     <div data-testid="addTodo">
-      <input
-        type="text"
-        placeholder="add todo..."
-        value={value}
-        onChange={(e) => setValue(e.target.value)}
-      />
-      <button onClick={handleSubmit}>Add Todo</button>
-      {todos.map((todo) => {
-        return <li key={todo.id}>{todo.text}</li>;
-      })}
+      <form onClick={handleSubmit}>
+        <input
+          // autoFocus
+          type="text"
+          placeholder="add todo..."
+          value={value}
+          onChange={(e) => setValue(e.target.value)}
+        />
+        <button>Add Todo</button>
+        <ul>
+          {todos.map((todo) =>
+            todo.text !== '' ? <li key={todo.id}>{todo.text}</li> : ''
+          )}
+        </ul>
+      </form>
     </div>
   );
 };
