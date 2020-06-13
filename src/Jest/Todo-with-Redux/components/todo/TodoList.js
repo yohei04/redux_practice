@@ -9,14 +9,14 @@ const TodoList = () => {
   return (
     <ul style={{userSelect: 'none'}}>
       {todos.length === 0 ? (
-        <p>No Todos now</p>
+        <h2>No Todos now</h2>
       ) : (
         todos.map((todo) => (
           <div
             key={todo.id}
             style={{
               display: 'flex',
-              
+              justifyContent: 'center',
               alignItems: 'center',
               fontSize: '2rem',
             }}

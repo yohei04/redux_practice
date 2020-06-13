@@ -18,15 +18,18 @@ const AddTodo = () => {
   // console.log(todos)
   return (
     <div data-testid="addTodo">
-      <form>
+      <form style={{ marginTop: '2rem' }}>
         <input
           autoFocus
+          style={{ fontSize: '1.2rem' }}
           type="text"
           placeholder="add todo..."
           value={value}
           onChange={(e) => setValue(e.target.value)}
         />
-        <button onClick={handleSubmit}>Add Todo</button>
+        <button style={{ fontSize: '1.2rem' }} onClick={handleSubmit}>
+          Add Todo
+        </button>
       </form>
     </div>
   );
