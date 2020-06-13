@@ -14,7 +14,7 @@ const TodoList = () => {
   return (
     <ul>
       {todos.length === 0 ? (
-        <div>No Todos now</div>
+        <p>No Todos now</p>
       ) : (
         todos.map((todo) => (
           <div key={todo.id} style={{ display: 'flex' }}>
