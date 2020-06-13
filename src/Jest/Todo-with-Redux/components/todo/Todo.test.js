@@ -1,13 +1,13 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { createStore } from 'redux';
 import { Provider } from 'react-redux';
-import { render, screen, fireEvent } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
-import AddTodo from '../components/AddTodo';
-import rootReducer from '../rootReducer';
+import { AddTodo, TodoList } from './index';
+import rootReducer from '../../rootReducer';
+import Todo from './Todo';
 
-// const startingState = [{id: 1, text: 'text'}];
 const renderWithRedux = (
   component,
   { initialState, store = createStore(rootReducer, initialState) } = {}
@@ -17,27 +17,9 @@ const renderWithRedux = (
   };
 };
 
-describe('<AddTodo />', () => {
-  renderWithRedux(<AddTodo />);
-
-  test('should renders with redux', () => {
-    expect(screen.getByTestId('addTodo')).toBeInTheDocument();
-  });
-
-  test('should have Add Todo button', () => {
-    renderWithRedux(<AddTodo />);
-    expect(screen.getByRole('button')).toHaveTextContent(/add todo/i);
-  });
-
-  test('should show typed text', () => {
-    renderWithRedux(<AddTodo />);
-    const inputTodo = screen.getByPlaceholderText('add todo...');
-    userEvent.type(inputTodo, 'text test');
-    expect(inputTodo.value).toBe('text test');
-  });
-
+describe('<Todo />', () => {
   test('should add todo with valid text', () => {
-    renderWithRedux(<AddTodo />);
+    renderWithRedux(<Todo />);
     const addTodoButton = screen.getByRole('button', { name: /add todo/i });
     const inputTodo = screen.getByPlaceholderText('add todo...');
     userEvent.type(inputTodo, 'text test');
@@ -49,13 +31,12 @@ describe('<AddTodo />', () => {
   });
 
   test("shouldn't add todo with empty text", () => {
-    renderWithRedux(<AddTodo />);
+    renderWithRedux(<Todo />);
     const addTodoButton = screen.getByRole('button', { name: /add todo/i });
     const inputTodo = screen.getByPlaceholderText('add todo...');
     userEvent.type(inputTodo, '');
     userEvent.click(addTodoButton);
     const todoList = screen.queryByRole('listitem');
     expect(todoList).not.toBeInTheDocument();
-    screen.debug();
   });
 });
