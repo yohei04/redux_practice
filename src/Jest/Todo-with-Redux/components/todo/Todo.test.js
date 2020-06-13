@@ -1,21 +1,8 @@
 import React from 'react';
-import { createStore } from 'redux';
-import { Provider } from 'react-redux';
-import { render, screen } from '@testing-library/react';
+import { screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-
-import { AddTodo, TodoList } from './index';
-import rootReducer from '../../rootReducer';
+import renderWithRedux from '../../test-utils';
 import Todo from './Todo';
-
-const renderWithRedux = (
-  component,
-  { initialState, store = createStore(rootReducer, initialState) } = {}
-) => {
-  return {
-    ...render(<Provider store={store}>{component}</Provider>),
-  };
-};
 
 describe('<Todo />', () => {
   test('should add todo with valid text', () => {

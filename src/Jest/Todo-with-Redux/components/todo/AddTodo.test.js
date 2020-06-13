@@ -1,20 +1,8 @@
 import React from 'react';
-import { createStore } from 'redux';
-import { Provider } from 'react-redux';
-import { render, screen } from '@testing-library/react';
+import { screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-
-import {AddTodo} from './index'
-import rootReducer from '../../rootReducer';
-
-const renderWithRedux = (
-  component,
-  { initialState, store = createStore(rootReducer, initialState) } = {}
-) => {
-  return {
-    ...render(<Provider store={store}>{component}</Provider>),
-  };
-};
+import renderWithRedux from '../../test-utils';
+import { AddTodo } from './index';
 
 describe('<AddTodo />', () => {
   test('should renders with redux', () => {
@@ -30,7 +18,10 @@ describe('<AddTodo />', () => {
   test('should show typed text', () => {
     renderWithRedux(<AddTodo />);
     const inputTodo = screen.getByPlaceholderText('add todo...');
+    const addTodoButton = screen.getByRole('button', { name: /add todo/i });
     userEvent.type(inputTodo, 'text test');
     expect(inputTodo.value).toBe('text test');
+    userEvent.click(addTodoButton)
+    expect(inputTodo.value).toBe('');
   });
 });
