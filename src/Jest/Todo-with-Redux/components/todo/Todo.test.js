@@ -53,7 +53,11 @@ describe('<Todo />', () => {
   });
 
   test('should delete when click delete button', () => {
+    setUpToMakeTodo();
     const deleteButton = screen.getByRole('button', { name: /x/i });
-    screen.debug(checkbox);
+    userEvent.click(deleteButton);
+    const todoList = screen.queryByText('text test');
+    expect(todoList).toBeNull;
+    screen.debug();
   });
 });
