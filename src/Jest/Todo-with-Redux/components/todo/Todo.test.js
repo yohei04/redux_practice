@@ -52,12 +52,14 @@ describe('<Todo />', () => {
     expect(checkbox.checked).toBe(true);
   });
 
-  test('should delete when click delete button', () => {
+  test('should delete todo and show default text when click delete button', () => {
     setUpToMakeTodo();
     const deleteButton = screen.getByRole('button', { name: /x/i });
+    const addedTodoList = screen.queryByText('text test');
+    expect(addedTodoList).toHaveTextContent('text test');
     userEvent.click(deleteButton);
-    const todoList = screen.queryByText('text test');
-    expect(todoList).toBeNull;
+    const defaultText = screen.getByText(/No Todos now/i);
+    expect(defaultText).toBeInTheDocument();
     screen.debug();
   });
 });

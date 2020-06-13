@@ -1,5 +1,5 @@
 import React from 'react';
-import { ADD_TODO, TOGGLE_TODO } from './todoTypes';
+import { ADD_TODO, TOGGLE_TODO, DELETE_TODO } from './todoTypes';
 
 export const initialState = [];
 
@@ -20,6 +20,10 @@ const todoReducer = (state = initialState, action) => {
           ? { ...todo, isCompleted: !todo.isCompleted }
           : todo
       );
+
+    case DELETE_TODO:
+      return state.filter((todo) => todo.id !== action.id);
+
     default:
       return state;
   }

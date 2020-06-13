@@ -7,7 +7,7 @@ import Todo from './components/todo/Todo';
 const App = () => {
   return (
     <Provider store={store}>
-      <div>
+      <div style={{textAlign: 'center'}}>
         <Todo />
       </div>
     </Provider>
