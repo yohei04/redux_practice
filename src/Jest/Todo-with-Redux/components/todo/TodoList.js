@@ -25,7 +25,15 @@ const TodoList = () => {
       <ul style={{ userSelect: 'none' }}>
         {todos &&
           todos.todo &&
-
+          todos.todo.sort(function (a, b) {
+            if (a.id > b.id) {
+              return -1;
+            }
+            if (a.id < b.id) {
+              return 1;
+            }
+            return 0;
+          }) &&
           todos.todo.map((todo) => (
             <div
               key={todo.id}
