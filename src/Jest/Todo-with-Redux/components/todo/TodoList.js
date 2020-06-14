@@ -21,22 +21,45 @@ const TodoList = () => {
     <h2>{todos.error} </h2>
   ) : (
     <div>
-      <h2>User List</h2>
-      <div>
+      <h2>Todo List</h2>
+      <ul style={{ userSelect: 'none' }}>
         {todos &&
           todos.todo &&
+
           todos.todo.map((todo) => (
-            <p
+            <div
               key={todo.id}
-              onClick={() => dispatch(toggleTodo(todo.id))}
               style={{
-                textDecoration: todo.completed ? 'line-through' : 'none',
+                display: 'flex',
+                justifyContent: 'center',
+                alignItems: 'center',
+                fontSize: '1.4rem',
               }}
             >
-              {todo.title}
-            </p>
+              <input
+                id={`checkbox-${todo.id}`}
+                type="checkbox"
+                onClick={() => dispatch(toggleTodo(todo.id))}
+                checked={todo.completed}
+              />
+              <label
+                htmlFor={`checkbox-${todo.id}`}
+                data-testid={`checkbox-${todo.id}`}
+                style={{
+                  textDecoration: todo.completed ? 'line-through' : 'none',
+                }}
+              >
+                {todo.title}
+              </label>
+              <button
+                style={{ background: 'tomato', marginLeft: '.4rem' }}
+                onClick={() => dispatch(deleteTodo(todo.id))}
+              >
+                x
+              </button>
+            </div>
           ))}
-      </div>
+      </ul>
     </div>
   );
 

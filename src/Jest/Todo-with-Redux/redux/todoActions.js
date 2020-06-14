@@ -8,7 +8,7 @@ import {
 } from './todoTypes';
 import axios from 'axios';
 
-let nextTodoId = 1;
+let nextTodoId = 4;
 export const addTodo = (title) => {
   return {
     type: ADD_TODO,
@@ -57,7 +57,7 @@ export const fetchTodos = () => {
   return (dispatch) => {
     dispatch(fetchTodosRequest);
     axios
-      .get('https://jsonplaceholder.typicode.com/todos?_limit=10')
+      .get('https://jsonplaceholder.typicode.com/todos?_limit=3')
       .then((res) => {
         const todos = res.data;
         // {console.log(todos)}

@@ -12,14 +12,18 @@ export const initialState = [];
 const todoReducer = (state = initialState, action) => {
   switch (action.type) {
     case ADD_TODO:
-      return [
+      return {
         ...state,
-        {
-          id: action.payload.id,
-          title: action.payload.title,
-          completed: false,
-        },
-      ];
+        todo: [
+          ...state.todo,
+          {
+            userId: 1,
+            id: action.payload.id,
+            title: action.payload.title,
+            completed: false,
+          },
+        ],
+      };
     case TOGGLE_TODO:
       return {
         ...state,
@@ -29,7 +33,10 @@ const todoReducer = (state = initialState, action) => {
       };
 
     case DELETE_TODO:
-      return state.filter((todo) => todo.id !== action.id);
+      return {
+        ...state,
+        todo: state.todo.filter((todo) => todo.id !== action.id),
+      };
     case FETCH_USERS_REQUEST:
       return {
         ...state,
