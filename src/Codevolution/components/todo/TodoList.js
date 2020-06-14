@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { toggleTodo, deleteTodo } from '../../redux';
 
 const TodoList = ({ todos, toggleTodo, deleteTodo }) => {
-  console.log(todos);
+  // console.log(todos);
 
   return (
     <div className="todo-list">

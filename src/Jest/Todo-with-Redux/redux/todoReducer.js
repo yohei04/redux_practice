@@ -1,5 +1,11 @@
-import React from 'react';
-import { ADD_TODO, TOGGLE_TODO, DELETE_TODO } from './todoTypes';
+import {
+  ADD_TODO,
+  TOGGLE_TODO,
+  DELETE_TODO,
+  FETCH_USERS_REQUEST,
+  FETCH_USERS_SUCCESS,
+  FETCH_USERS_FAILURE,
+} from './todoTypes';
 
 export const initialState = [];
 
@@ -10,19 +16,37 @@ const todoReducer = (state = initialState, action) => {
         ...state,
         {
           id: action.payload.id,
-          text: action.payload.text,
-          isCompleted: false,
+          title: action.payload.title,
+          completed: false,
         },
       ];
     case TOGGLE_TODO:
-      return state.map((todo) =>
+      return state.todo.map((todo) =>
         todo.id === action.id
-          ? { ...todo, isCompleted: !todo.isCompleted }
+          ? { ...todo, completed: !todo.completed }
           : todo
       );
-
     case DELETE_TODO:
       return state.filter((todo) => todo.id !== action.id);
+    case FETCH_USERS_REQUEST:
+      return {
+        ...state,
+        loading: true,
+      };
+    case FETCH_USERS_SUCCESS:
+      return {
+        ...state,
+        loading: false,
+        todo: action.payload,
+        error: '',
+      };
+    case FETCH_USERS_FAILURE:
+      return {
+        ...state,
+        loading: false,
+        todo: [],
+        error: action.payload,
+      };
 
     default:
       return state;

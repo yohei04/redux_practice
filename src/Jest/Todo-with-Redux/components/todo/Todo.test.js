@@ -13,6 +13,18 @@ const setUpToMakeTodo = () => {
 };
 
 describe('<Todo />', () => {
+  test('should increase id', () => {
+    renderWithRedux(<Todo />);
+    const addTodoButton = screen.getByRole('button', { name: /add todo/i });
+    const inputTodo = screen.getByPlaceholderText('add todo...');
+    userEvent.type(inputTodo, 'text test');
+    userEvent.click(addTodoButton);
+    expect(screen.getByTestId('checkbox-1')).toBeInTheDocument();
+    userEvent.type(inputTodo, 'next text test');
+    userEvent.click(addTodoButton);
+    expect(screen.getByTestId('checkbox-2')).toBeInTheDocument();
+  });
+
   test('should add todo with valid text', () => {
     renderWithRedux(<Todo />);
     const addTodoButton = screen.getByRole('button', { name: /add todo/i });
@@ -60,6 +72,5 @@ describe('<Todo />', () => {
     userEvent.click(deleteButton);
     const defaultText = screen.getByText(/No Todos now/i);
     expect(defaultText).toBeInTheDocument();
-    screen.debug();
   });
 });
