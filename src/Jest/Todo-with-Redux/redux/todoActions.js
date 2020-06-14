@@ -60,6 +60,7 @@ export const fetchTodos = () => {
       .get('https://jsonplaceholder.typicode.com/todos?_limit=10')
       .then((res) => {
         const todos = res.data;
+        // {console.log(todos)}
         dispatch(fetchTodosSuccess(todos));
       })
       .catch((err) => {

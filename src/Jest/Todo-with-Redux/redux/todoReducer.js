@@ -21,11 +21,13 @@ const todoReducer = (state = initialState, action) => {
         },
       ];
     case TOGGLE_TODO:
-      return state.todo.map((todo) =>
-        todo.id === action.id
-          ? { ...todo, completed: !todo.completed }
-          : todo
-      );
+      return {
+        ...state,
+        todo: state.todo.map((todo) =>
+          todo.id === action.id ? { ...todo, completed: !todo.completed } : todo
+        ),
+      };
+
     case DELETE_TODO:
       return state.filter((todo) => todo.id !== action.id);
     case FETCH_USERS_REQUEST:
