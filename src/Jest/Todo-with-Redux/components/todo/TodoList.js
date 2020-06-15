@@ -4,16 +4,11 @@ import { toggleTodo, deleteTodo, fetchTodos } from '../../redux/todoActions';
 
 const TodoList = () => {
   const todos = useSelector((state) => state.todo);
-  // const todosData = useSelector((state) => state.todo)
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(fetchTodos());
-  }, []);
-
-  console.log(todos);
-
-  // return (
+  }, [dispatch]);
 
   return todos.loading ? (
     <h2>Loading</h2>
@@ -23,7 +18,10 @@ const TodoList = () => {
     <div>
       <h2>Todo List</h2>
       <ul style={{ userSelect: 'none' }}>
-        {todos &&
+        {todos.todo && todos.todo.length === 0 ? (
+          <h2>No Todos! Well Done!</h2>
+        ) : (
+          todos &&
           todos.todo &&
           todos.todo.sort(function (a, b) {
             if (a.id > b.id) {
@@ -48,7 +46,7 @@ const TodoList = () => {
                 id={`checkbox-${todo.id}`}
                 type="checkbox"
                 onClick={() => dispatch(toggleTodo(todo.id))}
-                checked={todo.completed}
+                defaultChecked={todo.completed}
               />
               <label
                 htmlFor={`checkbox-${todo.id}`}
@@ -66,50 +64,11 @@ const TodoList = () => {
                 x
               </button>
             </div>
-          ))}
+          ))
+        )}
       </ul>
     </div>
   );
-
-  // <ul style={{ userSelect: 'none' }}>
-  //   {todos.length === 0 ? (
-  //     <h2>No Todos now</h2>
-  //   ) : (
-  //     todos.map((todo) => (
-  //       <div
-  //         key={todo.id}
-  //         style={{
-  //           display: 'flex',
-  //           justifyContent: 'center',
-  //           alignItems: 'center',
-  //           fontSize: '2rem',
-  //         }}
-  //       >
-  //         <input
-  //           id={`checkbox-${todo.id}`}
-  //           type="checkbox"
-  //           onClick={() => dispatch(toggleTodo(todo.id))}
-  //         />
-  //         <label
-  //           htmlFor={`checkbox-${todo.id}`}
-  //           data-testid={`checkbox-${todo.id}`}
-  //           style={{
-  //             textDecoration: todo.completed ? 'line-through' : 'none',
-  //           }}
-  //         >
-  //           {todo.title}
-  //         </label>
-  //         <button
-  //           style={{ background: 'tomato', marginLeft: '.4rem' }}
-  //           onClick={() => dispatch(deleteTodo(todo.id))}
-  //         >
-  //           x
-  //         </button>
-  //       </div>
-  //     ))
-  //   )}
-  // </ul>
-  // )
 };
 
 export default TodoList;
