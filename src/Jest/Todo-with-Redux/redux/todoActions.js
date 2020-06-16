@@ -2,9 +2,9 @@ import {
   ADD_TODO,
   TOGGLE_TODO,
   DELETE_TODO,
-  FETCH_USERS_REQUEST,
-  FETCH_USERS_SUCCESS,
-  FETCH_USERS_FAILURE,
+  FETCH_TODOS_REQUEST,
+  FETCH_TODOS_SUCCESS,
+  FETCH_TODOS_FAILURE,
 } from './todoTypes';
 import axios from 'axios';
 
@@ -35,37 +35,30 @@ export const deleteTodo = (id) => {
 
 export const fetchTodosRequest = () => {
   return {
-    type: FETCH_USERS_REQUEST,
+    type: FETCH_TODOS_REQUEST,
   };
 };
 
 export const fetchTodosSuccess = (todos) => {
   return {
-    type: FETCH_USERS_SUCCESS,
-    payload: todos,
+    type: FETCH_TODOS_SUCCESS,
+    todos,
   };
 };
 
 export const fetchTodosFailure = (error) => {
   return {
-    type: FETCH_USERS_FAILURE,
-    payload: error,
+    type: FETCH_TODOS_FAILURE,
+    error,
   };
 };
 
 export const fetchTodos = () => {
   return (dispatch) => {
-    dispatch(fetchTodosRequest);
-    axios
-      .get('https://jsonplaceholder.typicode.com/todos?_limit=3')
-      .then((res) => {
-        const todos = res.data;
-        // {console.log(todos)}
-        dispatch(fetchTodosSuccess(todos));
-      })
-      .catch((err) => {
-        const errorMsg = err.message;
-        dispatch(fetchTodosFailure(errorMsg));
-      });
+    dispatch(fetchTodosRequest());
+    return fetch('https://jsonplaceholder.typicode.com/todos?_limit=3')
+      .then((res) => res.json())
+      .then((body) => dispatch(fetchTodosSuccess(body)))
+      .catch((error) => dispatch(fetchTodosFailure(error)));
   };
 };

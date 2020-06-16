@@ -2,9 +2,9 @@ import {
   ADD_TODO,
   TOGGLE_TODO,
   DELETE_TODO,
-  FETCH_USERS_REQUEST,
-  FETCH_USERS_SUCCESS,
-  FETCH_USERS_FAILURE,
+  FETCH_TODOS_REQUEST,
+  FETCH_TODOS_SUCCESS,
+  FETCH_TODOS_FAILURE,
 } from './todoTypes';
 
 export const initialState = [];
@@ -37,24 +37,24 @@ const todoReducer = (state = initialState, action) => {
         ...state,
         todo: state.todo.filter((todo) => todo.id !== action.id),
       };
-    case FETCH_USERS_REQUEST:
+    case FETCH_TODOS_REQUEST:
       return {
         ...state,
         loading: true,
       };
-    case FETCH_USERS_SUCCESS:
+    case FETCH_TODOS_SUCCESS:
       return {
         ...state,
         loading: false,
-        todo: action.payload,
+        todo: action.todos,
         error: '',
       };
-    case FETCH_USERS_FAILURE:
+    case FETCH_TODOS_FAILURE:
       return {
         ...state,
         loading: false,
         todo: [],
-        error: action.payload,
+        error: action.error,
       };
 
     default:
